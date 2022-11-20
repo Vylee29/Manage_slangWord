@@ -15,16 +15,16 @@ public class slangWords {
         this.historyList = new ArrayList<String>();
         this.historyAdd = new HashMap<String, ArrayList<String>>();
         this.historyDelete = new HashMap<String, ArrayList<String>>();
-
     }
-
-    private static void getKeys(String value) {
-
+    private static ArrayList<String> getKeys(String value) {
+        ArrayList<String> arr = new ArrayList<String>();
         for (HashMap.Entry<String, ArrayList<String>> entry : slangWord.entrySet()) {
             if (entry.getValue().contains(value)) {
-                System.out.println(entry.getKey());
+                arr.add(entry.getKey());
             }
         }
+        return arr;
+
     }
 
     public HashMap<String, ArrayList<String>> getSlangWord() {
@@ -68,16 +68,18 @@ public class slangWords {
         }
     }
 
-    public void findSlangWord(String slangKey) {
+    public ArrayList<String> findSlangWord(String slangKey) {
         historyList.add(slangKey);
         if (slangWord.containsKey(slangKey)) {
-            System.out.println("The Value is: " + slangWord.get(slangKey) + " of key " + slangKey);
+            //System.out.println("The Value is: " + slangWord.get(slangKey) + " of key " + slangKey);
+            return slangWord.get(slangKey);
         }
+        return null;
     }
 
-    public void findWithDef(String slangDef) {
+    public ArrayList<String> findWithDef(String slangDef) {
         historyList.add(slangDef);
-        getKeys(slangDef);
+        return getKeys(slangDef);
     }
 
     public void takeHistoryList() {
