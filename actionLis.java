@@ -7,15 +7,14 @@ import java.io.IOException;
 
 public class actionLis implements ActionListener {
     private gui Gui;
-    public actionLis (gui Gui) {
+    private slangWords sl ;
+    public actionLis (gui Gui,slangWords sl ) {
         this.Gui = Gui;
+        this.sl=sl;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         //System.out.println("Button pressed!");
-        slangWords sl = new slangWords();
-        try {
-            sl.readFile();
             String src = e.getActionCommand();
             if(src.equals("Search by word")){
                 Gui.searchSlangWord(sl);
@@ -23,9 +22,15 @@ public class actionLis implements ActionListener {
             else if (src.equals("Search by definition")) {
                 Gui.searchSlangDef(sl);
             }
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+            else if (src.equals("History")) {
+                Gui.showHistoryList(sl);
+            }
+            else if (src.equals("Add")) {
+                Gui.addNewSlang(sl);
+            }
+            else if (src.equals("Delete")) {
+                Gui.deleteSlang(sl);
+            }
 
     }
 

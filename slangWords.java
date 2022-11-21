@@ -19,10 +19,13 @@ public class slangWords {
     private static ArrayList<String> getKeys(String value) {
         ArrayList<String> arr = new ArrayList<String>();
         for (HashMap.Entry<String, ArrayList<String>> entry : slangWord.entrySet()) {
-            if (entry.getValue().contains(value)) {
-                arr.add(entry.getKey());
+
+                for(String i: entry.getValue()){
+                    if(i.contains(value))
+                        arr.add(entry.getKey());
+                }
             }
-        }
+
         return arr;
 
     }
@@ -76,30 +79,20 @@ public class slangWords {
         }
         return null;
     }
-
     public ArrayList<String> findWithDef(String slangDef) {
         historyList.add(slangDef);
         return getKeys(slangDef);
     }
-
-    public void takeHistoryList() {
-        if (historyList == null)
-            return;
-        for (String i : historyList) {
-            System.out.println(i);
+    public ArrayList<String> takeHistoryList() {
+        if (historyList == null) {
+            return null;
         }
+        return historyList;
     }
-
-    public void addNewSlang(String newSlangWordKey, ArrayList<String> newSlangWordValue) {
-        int num;
+    public void addNewSlang(String newSlangWordKey, ArrayList<String> newSlangWordValue,String num) {
         String str;
-        Scanner sc = new Scanner(System.in);
         if (slangWord.containsKey(newSlangWordKey)) {
-            System.out.println("This slang word is exists in dictionary!!!");
-            System.out.println("You want overwrite or duplicate for new slang word ....?");
-            System.out.print("Choose 1 (overwrite) or 2 (duplicate): ");
-            num = sc.nextInt();
-            if (num == 1) {
+            if (num.equals("1")) {
                 slangWord.replace(newSlangWordKey, newSlangWordValue);
             } else {
                 slangWord.put(newSlangWordKey, newSlangWordValue);
@@ -111,21 +104,16 @@ public class slangWords {
         }
 
     }
-
     public void editSlang(String newSlangWordKey, ArrayList<String> newSlangWordValue) {
         if (slangWord.containsKey(newSlangWordKey))
             slangWord.replace(newSlangWordKey, newSlangWordValue);
 
     }
-
-    public void deleteSlang(String newSlangWordKey, ArrayList<String> newSlangWordValue, Boolean isConfirm) {
+    public void deleteSlang(String newSlangWordKey, ArrayList<String> newSlangWordValue, String isConfirm) {
         if (slangWord.containsKey(newSlangWordKey))
-            if (isConfirm == true) {
+            if (isConfirm.equals("yes")) {
                 slangWord.remove(newSlangWordKey, newSlangWordValue);
                 historyDelete.put(newSlangWordKey, newSlangWordValue);
-                for (String i : slangWord.keySet()) {
-                    System.out.println("key: " + i + " value: " + slangWord.get(i));
-                }
             } else {
                 return;
             }
