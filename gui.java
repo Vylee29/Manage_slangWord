@@ -1,12 +1,14 @@
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class gui extends JFrame {
     private  JTextField jText2;
@@ -28,7 +30,8 @@ public class gui extends JFrame {
 
         jText1 = new JTextField("Searching anything at here =)))",30);
         jText2 = new JTextField(30);
-        jText2.setHorizontalAlignment(JTextField.CENTER);
+        jText2.setText(" \uD835\uDCD7\uD835\uDCEA\uD835\uDCFF\uD835\uDCEE \uD835\uDCEA \uD835\uDCF0\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCED\uD835\uDCEA\uD835\uDD02 ⋆ ˚｡⋆\uD83D\uDC8C⋆ ˚⋆˶ᵔ ᵕ ᵔ˶ ა");
+        jText2.setFont(new Font( "SansSerif", Font.BOLD,20));
         jText2.setEditable(false);
         jText3 = new JTextField("Input some elements in here and choose utility you want :* <3 ",50);
 
@@ -205,7 +208,25 @@ public class gui extends JFrame {
         for(String i:arr) {
             str += i + " ";
         }
-        this.jText2.setText(str);
+        //this.jText2.setText(str);
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        String[] name = {"History List"};
+        String[] res = arr.toArray(new String[arr.size()]);
+        String[][]result= new String[res.length][res.length];
+        for(int i=0;i< res.length;i++){
+            for(int j=0;j<res.length;j++){
+                result[i][j]=res[i];
+            }
+        }
+        JTable table = new JTable(result,name);
+        JPanel panel = new JPanel(new BorderLayout());
+        JScrollPane scrollPane = new JScrollPane(table);
+        panel.add(scrollPane, BorderLayout.CENTER);
+        frame.add(panel);
+        frame.setLocationByPlatform(true);
+        frame.setSize(700,500);
+        frame.setVisible(true);
     }
     public void addNewSlang (slangWords sl) {
         JFrame j = new JFrame();
