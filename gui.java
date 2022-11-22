@@ -266,6 +266,11 @@ public class gui extends JFrame {
             sl.deleteSlang(delSlangWordKey, delVal, option);
         }
     }
+    public void reset(slangWords sl)
+    {
+        sl.resetList();
+    }
+
 
     public static void createAndShowGui() throws IOException {
         new gui();

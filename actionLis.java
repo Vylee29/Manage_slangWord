@@ -31,6 +31,11 @@ public class actionLis implements ActionListener {
             else if (src.equals("Delete")) {
                 Gui.deleteSlang(sl);
             }
+            else if (src.equals("Reset List")) {
+                Gui.reset(sl);
+            }
+
+
 
     }
 
