@@ -118,7 +118,6 @@ public class slangWords {
                 return;
             }
     }
-
     public void resetList() {
         for (String i : historyAdd.keySet()) {
             if (slangWord.containsKey(i)) {
@@ -147,11 +146,11 @@ public class slangWords {
         return slangWord.get(key);
     }
 
-    public void quizSlangWord(String ques, String ans) {
+    public Boolean quizSlangWord(String ques, String ans) {
         if (slangWord.get(ques).contains(ans)) {
-            System.out.println("That's right!!!");
+            return true;
         } else {
-            System.out.println("Wrong...");
+            return false;
         }
     }
 }

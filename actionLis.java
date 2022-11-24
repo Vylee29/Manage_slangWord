@@ -37,6 +37,10 @@ public class actionLis implements ActionListener {
             else if (src.equals("Quiz word")) {
                 Gui.quizKeyWord(sl);
             }
+            else if (src.equals("Quiz definition")) {
+                Gui.quizDefWord(sl);
+            }
+
 
     }
 
