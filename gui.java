@@ -271,6 +271,203 @@ public class gui extends JFrame {
         sl.resetList();
     }
 
+    public void setBackGrond (JButton j1,JButton j2,JButton j3,JButton j4 ){
+        j1.setBackground(Color.blue);
+        j1.setForeground(Color.YELLOW);
+        j2.setBackground(Color.blue);
+        j2.setForeground(Color.YELLOW);
+        j3.setBackground(Color.blue);
+        j3.setForeground(Color.YELLOW);
+        j4.setBackground(Color.blue);
+        j4.setForeground(Color.YELLOW);
+    }
+    public void quizKeyWord (slangWords sl)
+    {   JButton ans1 = new JButton();
+        JButton ans2= new JButton();
+        JButton ans3= new JButton();
+        JButton ans4= new JButton();
+        Object key = sl.randomSlangWord();
+        String ques = key.toString();
+        JTextField quesText = new JTextField();
+        quesText.setText(ques);
+        quesText.setHorizontalAlignment(JTextField.CENTER);
+        quesText.setForeground(Color.RED);
+        quesText.setFont(new Font("Arial",3,40));
+
+        Random generator = new Random();
+        int value = generator.nextInt(4) + 1;
+        System.out.println(value);
+        JFrame frame = new JFrame();
+        frame.setTitle("Quizzie Slang Words");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationByPlatform(true);
+        frame.setSize(700,500);
+        JPanel panel = new JPanel(new BorderLayout());
+        JPanel ans = new JPanel(new GridLayout(2,2));
+        if(value==1) {
+            ans1.setText(sl.getSlangWord().get(key).toString());
+            ans2.setText(sl.randomSlangDef().toString());
+            ans3.setText(sl.randomSlangDef().toString());
+            ans4.setText(sl.randomSlangDef().toString());
+            setBackGrond(ans1,ans2,ans3,ans4);
+            ans.add(ans1);
+            ans.add(ans2);
+            ans.add(ans3);
+            ans.add(ans4);
+        }
+        else if (value==2) {
+            ans2.setText(sl.getSlangWord().get(key).toString());
+            ans1.setText(sl.randomSlangDef().toString());
+            ans3.setText(sl.randomSlangDef().toString());
+            ans4.setText(sl.randomSlangDef().toString());
+            setBackGrond(ans1,ans2,ans3,ans4);
+            ans.add(ans1);
+            ans.add(ans2);
+            ans.add(ans3);
+            ans.add(ans4);
+        }
+        else if (value==3) {
+            ans3.setText(sl.getSlangWord().get(key).toString());
+            ans1.setText(sl.randomSlangDef().toString());
+            ans2.setText(sl.randomSlangDef().toString());
+            ans4.setText(sl.randomSlangDef().toString());
+            setBackGrond(ans1,ans2,ans3,ans4);
+            ans.add(ans1);
+            ans.add(ans2);
+            ans.add(ans3);
+            ans.add(ans4);
+        }
+        else if (value==4) {
+            ans4.setText(sl.getSlangWord().get(key).toString());
+            ans1.setText(sl.randomSlangDef().toString());
+            ans2.setText(sl.randomSlangDef().toString());
+            ans3.setText(sl.randomSlangDef().toString());
+            setBackGrond(ans1,ans2,ans3,ans4);
+            ans.add(ans1);
+            ans.add(ans2);
+            ans.add(ans3);
+            ans.add(ans4);
+        }
+
+        if(value==1) {
+            ans1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Congratulations \uD83C\uDF89. You're right!!");
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            });
+            ans2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+        }
+        else if (value==2) {
+            ans2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Congratulations \uD83C\uDF89. You're right!!");
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            });
+            ans1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+        }
+        else if (value==3) {
+            ans3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Congratulations \uD83C\uDF89. You're right!!");
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            });
+            ans2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+        }
+        else if (value==4) {
+            ans4.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Congratulations \uD83C\uDF89. You're right!!");
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
+            });
+            ans2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+            ans1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Wrong \uD83D\uDE22...");
+                }
+            });
+        }
+
+        panel.add(quesText,BorderLayout.CENTER);
+        panel.add(ans, BorderLayout.SOUTH);
+        frame.add(panel);
+        frame.setVisible(true);
+    }
+
 
     public static void createAndShowGui() throws IOException {
         new gui();

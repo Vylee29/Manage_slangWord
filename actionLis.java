@@ -34,8 +34,9 @@ public class actionLis implements ActionListener {
             else if (src.equals("Reset List")) {
                 Gui.reset(sl);
             }
-
-
+            else if (src.equals("Quiz word")) {
+                Gui.quizKeyWord(sl);
+            }
 
     }
 
