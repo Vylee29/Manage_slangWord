@@ -95,7 +95,7 @@ public class slangWords {
             if (num.equals("1")) {
                 slangWord.replace(newSlangWordKey, newSlangWordValue);
             } else {
-                slangWord.put(newSlangWordKey, newSlangWordValue);
+                slangWord.get(newSlangWordKey).add(String.join(" ",newSlangWordValue));
                 historyAdd.put(newSlangWordKey, newSlangWordValue);
             }
         } else {
