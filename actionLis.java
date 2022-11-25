@@ -32,7 +32,17 @@ public class actionLis implements ActionListener {
                 Gui.deleteSlang(sl);
             }
             else if (src.equals("Reset List")) {
-                Gui.reset(sl);
+                try {
+                    Gui.reset(sl);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            else if (src.equals("Edit")) {
+                Gui.edit(sl);
+            }
+            else if (src.equals("Random For A Day")) {
+                Gui.random(sl);
             }
             else if (src.equals("Quiz word")) {
                 Gui.quizKeyWord(sl);

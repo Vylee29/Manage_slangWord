@@ -23,15 +23,15 @@ public class gui extends JFrame {
     }
     private void init(){
         this.setTitle("Slang Words Dictionary");
-        this.setSize(770,500);
+        this.setSize(1315,600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         actionLis ac = new actionLis(this,sl);
 
         jText1 = new JTextField("Searching anything at here =)))",30);
         jText2 = new JTextField(30);
-        jText2.setText(" \uD835\uDCD7\uD835\uDCEA\uD835\uDCFF\uD835\uDCEE \uD835\uDCEA \uD835\uDCF0\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCED\uD835\uDCEA\uD835\uDD02 ⋆ ˚｡⋆\uD83D\uDC8C⋆ ˚⋆˶ᵔ ᵕ ᵔ˶ ა");
-        jText2.setFont(new Font( "SansSerif", Font.BOLD,20));
+        jText2.setText("        \uD835\uDCD7\uD835\uDCEA\uD835\uDCFF\uD835\uDCEE \uD835\uDCEA \uD835\uDCF0\uD835\uDCF8\uD835\uDCF8\uD835\uDCED \uD835\uDCED\uD835\uDCEA\uD835\uDD02 ⋆ ˚｡⋆\uD83D\uDC8C⋆ ˚⋆˶ᵔ ᵕ ᵔ˶ ა");
+        jText2.setFont(new Font( "SansSerif", Font.BOLD,25));
         jText2.setEditable(false);
         jText3 = new JTextField("Input some elements in here and choose utility you want :* <3 ",50);
 
@@ -69,6 +69,8 @@ public class gui extends JFrame {
         JButton jButton_Delete = new JButton("Delete");
         JButton jButton_History = new JButton("History");
         JButton jButton_Reset = new JButton("Reset List");
+        JButton jButton_Edit = new JButton("Edit");
+        JButton jButton_Random = new JButton("Random For A Day");
         JButton jButton_QuizWord = new JButton("Quiz word");
         JButton jButton_QuizDef = new JButton("Quiz definition");
         jButton_Word.setFont(new Font("Lato", Font.BOLD, 14));
@@ -101,6 +103,16 @@ public class gui extends JFrame {
         jButton_Reset.setForeground(Color.white);
         jButton_Reset.addActionListener(ac);
 
+        jButton_Edit.setFont(new Font("Lato", Font.PLAIN, 14));
+        jButton_Edit.setBackground(new Color(0x2dce98));
+        jButton_Edit.setForeground(Color.white);
+        jButton_Edit.addActionListener(ac);
+
+        jButton_Random.setFont(new Font("Lato", Font.PLAIN, 14));
+        jButton_Random.setBackground(new Color(0x2dce98));
+        jButton_Random.setForeground(Color.white);
+        jButton_Random.addActionListener(ac);
+
         jButton_QuizWord.setFont(new Font("Lato", Font.PLAIN, 14));
         jButton_QuizWord.setBackground(new Color(0x2dce98));
         jButton_QuizWord.setForeground(Color.white);
@@ -122,14 +134,16 @@ public class gui extends JFrame {
 
 
         JPanel jPanel_footer = new JPanel();
-        jPanel_footer.setLayout(new GridLayout(0,3,1,1));
+        jPanel_footer.setLayout(new GridLayout(2,4,1,1));
         jPanel_footer.add(jButton_Add);
         jPanel_footer.add(jButton_Delete);
         jPanel_footer.add(jButton_History);
         jPanel_footer.add(jButton_Reset);
+        jPanel_footer.add(jButton_Edit);
+        jPanel_footer.add(jButton_Random);
         jPanel_footer.add(jButton_QuizWord);
         jPanel_footer.add(jButton_QuizDef);
-        jPanel_footer.setPreferredSize(new Dimension(375,0));
+        jPanel_footer.setPreferredSize(new Dimension(650,0));
         JPanel jPanel_center = new JPanel();
         jPanel_center.setLayout(new BorderLayout());
         jPanel_center.add(jText,BorderLayout.CENTER);
@@ -158,7 +172,7 @@ public class gui extends JFrame {
         }
         else {
             for (String i : res) {
-                str += i + ", ";
+                str += i + " ";
             }
             //this.jText1.setText(str + "with key " + val);
             JOptionPane.showMessageDialog(this,
@@ -266,11 +280,32 @@ public class gui extends JFrame {
             sl.deleteSlang(delSlangWordKey, delVal, option);
         }
     }
-    public void reset(slangWords sl)
-    {
+    public void reset(slangWords sl) throws IOException {
         sl.resetList();
     }
-
+    public void edit(slangWords sl){
+        String newSlangWordKey = new String();
+        String newSlangWordVal = new String();
+        String[] key;
+        String val = jText3.getText();
+        ArrayList<String> newVal = new ArrayList<String>();
+        if (val.length() > 1) {
+            if (val.contains(" ")) {
+                key = val.split(" ");
+                newSlangWordKey = key[0];
+                newSlangWordVal = key[1];
+                newVal.add(newSlangWordVal);
+            }
+            sl.editSlang(newSlangWordKey, newVal);
+        }
+    }
+    public void random(slangWords sl){
+        Object key = sl.randomSlangWord();
+        String newRand = "On this day slang word is:(˵ •̀ ᴗ - ˵ )˚*" +" "+ key.toString() +" "+sl.getSlangWord().get(key).toString();
+        jText2.setFont(new Font( "Arial", Font.ITALIC,19));
+        jText2.setHorizontalAlignment(JTextField.CENTER);
+        jText2.setText(newRand);
+    }
     public void setBackGrond (JButton j1,JButton j2,JButton j3,JButton j4 ){
         j1.setBackground(Color.blue);
         j1.setForeground(Color.YELLOW);
@@ -467,7 +502,6 @@ public class gui extends JFrame {
         frame.add(panel);
         frame.setVisible(true);
     }
-
     public void quizDefWord(slangWords sl){
         JButton ans1 = new JButton();
         JButton ans2= new JButton();
@@ -661,7 +695,5 @@ public class gui extends JFrame {
     public static void createAndShowGui() throws IOException {
         new gui();
     }
-    public static void main(String[] args) throws IOException {
-        createAndShowGui();
-    }
+
 }

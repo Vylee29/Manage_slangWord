@@ -8,8 +8,6 @@ public class slangWords {
     private ArrayList<String> historyList;
     private HashMap<String, ArrayList<String>> historyAdd;
     private HashMap<String, ArrayList<String>> historyDelete;
-
-
     public slangWords() {
         this.slangWord = new HashMap<String, ArrayList<String>>();
         this.historyList = new ArrayList<String>();
@@ -118,18 +116,8 @@ public class slangWords {
                 return;
             }
     }
-    public void resetList() {
-        for (String i : historyAdd.keySet()) {
-            if (slangWord.containsKey(i)) {
-                slangWord.remove(i, historyAdd.get(i));
-            }
-        }
-
-        for (String i : historyDelete.keySet()) {
-            slangWord.put(i, historyDelete.get(i));
-
-        }
-
+    public void resetList() throws IOException {
+        readFile();
     }
 
     public Object randomSlangWord() {
