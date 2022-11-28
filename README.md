@@ -1,6 +1,6 @@
-# Manage_slangWord
+# Manage_slangWord - HCMUS - 20CLC02
 # Java Language
-# HCMUS - 20CLC02
+* 10 chức năng
 1. Tìm kiếm theo slang word
 2. Tìm kiếm theo definition, hiển thị ra tất cả các slang words mà trong 
 defintion có chứa keyword gõ vào
